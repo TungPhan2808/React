@@ -1,7 +1,7 @@
 //Allow to create a React Component
 import React from "react";
 //help to construct list
-
+import DishDetail from "./DishdetailComponent";
 import {
   Card,
   CardImg,
@@ -21,6 +21,7 @@ function RenderMenuItem({ dish, onClick }) {
     </Card>
   );
 }
+
 const Menu = (props) => {
   const menu = props.dishes.map((dish) => {
     return (
@@ -37,7 +38,7 @@ const Menu = (props) => {
           <div className="col-12 col-md-5 m-1">
             {this.renderDish(this.state.selectedDish)}
           </div> */}
-      {/* <DishDetail dish={this.state.selectedDish} />  */}
+      {/* <DishDetail dish={this.state.selectedDish} /> */}
       {/* </div> */}
     </div>
   );
