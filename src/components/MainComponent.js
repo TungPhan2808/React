@@ -10,6 +10,7 @@ import Contact from "./ContactComponent";
 import { COMMENTS } from "../shared/comments";
 import { PROMOTIONS } from "../shared/promotions";
 import { LEADERS } from "../shared/leaders";
+import About from "./AboutComponent";
 //App is a React component class that receives parameters and calls props (properties)
 class Main extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Main extends Component {
         />
       );
     };
+
     const DishWithId = ({ match }) => {
       return (
         <DishDetail
@@ -49,12 +51,17 @@ class Main extends Component {
         />
       );
     };
+
+    const AboutPage = () => {
+      return <About leaders={this.state.leaders} />;
+    };
+
     return (
       <div>
         <Header />
         <Switch>
           <Route path="/home" component={HomePage} />
-
+          <Route exact path="/aboutus" component={AboutPage} />
           <Route
             exact
             path="/menu"
