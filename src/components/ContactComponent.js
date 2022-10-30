@@ -34,6 +34,7 @@ class Contact extends Component {
     this.setState({
       [name]: value,
     });
+    console.log(event.target.value);
   }
 
   handleSubmit(event) {
