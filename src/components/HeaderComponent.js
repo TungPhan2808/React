@@ -15,6 +15,7 @@ import {
   FormGroup,
   Label,
   Input,
+  Card,
 } from "reactstrap";
 
 import { NavLink } from "react-router-dom";
@@ -102,7 +103,14 @@ class Header extends Component {
           </div>
         </Navbar>
         <Jumbotron>
-          <div className="container">
+          <Card
+            body
+            inverse
+            style={{
+              backgroundColor: "#9575CD",
+              borderColor: "#9575CD",
+            }}
+          >
             <div className="container">
               <div className="row row-header">
                 <div className="col-12 col-sm-6">
@@ -115,7 +123,7 @@ class Header extends Component {
                 </div>
               </div>
             </div>
-          </div>
+          </Card>
         </Jumbotron>
         <Modal
           isOpen={this.state.isModalOpen}
