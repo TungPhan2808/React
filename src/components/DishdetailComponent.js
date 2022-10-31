@@ -11,6 +11,7 @@ import {
   BreadcrumbItem,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import CommentForm from "./CommentFormComponent";
 
 function RenderDish({ dish }) {
   if (dish != null)
@@ -28,7 +29,7 @@ function RenderDish({ dish }) {
   else return <div></div>;
 }
 
-function RenderComments({ comments }) {
+function RenderComments({ dish, comments }) {
   if (comments != null) {
     const cmts = comments.map((comment) => {
       return (
@@ -49,6 +50,7 @@ function RenderComments({ comments }) {
       <div className="col-12 col-md-5 m-1">
         <h4>Comments</h4>
         <ul className="list-unstyled">{cmts}</ul>
+        <CommentForm dish={dish} comment={comments} />
       </div>
     );
   } else return <div></div>;
@@ -73,7 +75,7 @@ const DishDetail = (props) => {
         </div>
         <div className="row">
           <RenderDish dish={props.dish} />
-          <RenderComments comments={props.comments} />
+          <RenderComments dish={props.dish} comments={props.comments} />
         </div>
       </div>
     );
