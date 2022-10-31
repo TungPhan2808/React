@@ -130,7 +130,7 @@ class Header extends Component {
           toggle={this.toggleModal}
           style={{ marginTop: "100px" }}
         >
-          <ModalHeader>Login</ModalHeader>
+          <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
           <ModalBody>
             <Form onSubmit={this.handleLogin}>
               <FormGroup>
