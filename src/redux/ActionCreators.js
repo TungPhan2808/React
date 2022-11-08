@@ -1,6 +1,8 @@
 import * as ActionTypes from "./ActionTypes";
-import { DISHES } from "../shared/dishes";
 import { baseUrl } from "../shared/baseUrl";
+import { Loading } from "./../components/LoadingComponent";
+import reactstrap from "reactstrap";
+import { type } from "@testing-library/user-event/dist/type";
 
 export const addComment = (comment) => ({
   type: ActionTypes.ADD_COMMENT,
@@ -88,6 +90,7 @@ export const addDishes = (dishes) => ({
   payload: dishes,
 });
 
+// Comment
 export const fetchComments = () => (dispatch) => {
   return fetch(baseUrl + "comments")
     .then(
@@ -122,6 +125,7 @@ export const addComments = (comments) => ({
   payload: comments,
 });
 
+//Promos
 export const fetchPromos = () => (dispatch) => {
   dispatch(promosLoading());
 
@@ -160,4 +164,42 @@ export const promosFailed = (errmess) => ({
 export const addPromos = (promos) => ({
   type: ActionTypes.ADD_PROMOS,
   payload: promos,
+});
+
+//Leader
+export const fetchLeaders = () => (dispatch) => {
+  dispatch(leadersLoading());
+
+  return fetch(baseUrl + "leaders")
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error" + response.status + ": " + response.statusText
+          );
+          error.response = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
+    .then((response) => response.json())
+    .then((leader) => dispatch(addLeader(leader)))
+    .catch((error) => dispatch(leadersFailed(error.message)));
+};
+export const leadersLoading = () => ({
+  type: ActionTypes.LEADERS_LOADING,
+});
+export const leadersFailed = (errmess) => ({
+  type: ActionTypes.LEADERS_FAILED,
+  payload: errmess,
+});
+export const addLeader = (leader) => ({
+  type: ActionTypes.ADD_LEADERS,
+  payload: leader,
 });
